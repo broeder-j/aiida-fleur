@@ -179,7 +179,8 @@ class fleur_initial_cls_wc(WorkChain):
         self.ctx.relax = wf_dict.get('relax', default.get('relax'))
         self.ctx.relax_mode = wf_dict.get('relax_mode', default.get('relax_mode'))
         self.ctx.relax_para = wf_dict.get('relax_para', default.get('dos_para'))
-
+        self.ctx.ref_calcs_res_given = []
+        
         defaultoptions = self._default_options
         if self.inputs.options:
             options = self.inputs.options.get_dict()
@@ -308,6 +309,11 @@ class fleur_initial_cls_wc(WorkChain):
                 elif isinstance(ref_el_node, ParameterData):
                     #extract from workflow output TODO
                     self.ctx.ref_cl_energies[elem] = {}
+                    # test if scf_output_para, or fleur_outputpara
+                    #self.ctx.ref_calcs_res_given = ref_given
+                    #ref_given = []
+                    #uuid_fleur_calc = 
+                    #ref_given.append(uuid_fleur_calc)
                 elif isinstance(ref_el_node, FleurinpData):
                     # add to calculations
                     #enforced parameters, add directly to run queue
@@ -641,7 +647,7 @@ class fleur_initial_cls_wc(WorkChain):
         all_CLS = {}
         # get results from calc
         calcs = self.ctx.calcs_res
-        ref_calcs = []#self.ctx.ref_calcs_res
+        ref_calcs = self.ctx.ref_calcs_res_given # []
         #print (self.ctx.ref_labels)
         for label in self.ctx.ref_labels:
             calc = self.ctx[label]
