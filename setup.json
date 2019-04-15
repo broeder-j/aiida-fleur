@@ -22,7 +22,7 @@
         ],
     "reentry_register" : true,
     "install_requires" : [
-            "aiida-core<=0.12.3[atomic_tools]",
+            "aiida-core[atomic_tools] >=0.12.3,<1.0",
             "lxml>=3.6.4",
             "pytest-cov>=2.5.0",
             "pytest",
