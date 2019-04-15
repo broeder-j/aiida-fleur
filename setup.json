@@ -1,5 +1,5 @@
 {
-    "version" : "0.6.2",
+    "version" : "0.6.3",
     "name" : "aiida-fleur",
     "url" : "https://github.com/broeder-j/aiida-fleur",
     "license" : "MIT License, see LICENSE.txt file.",
